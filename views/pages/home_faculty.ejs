@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/study_scapes.css" />
+    <title>StudyScapes Home Page - Faculty</title>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li>
+                    <a href="home_fa" class="active"><span></span>Home - Faculty</a>
+                </li>
+                <li>
+                    <ul>
+                        <li><a href="">Review/Request Meetups</a></li>
+                        <li><a href="">Room Finder</a></li>
+                        <li><a href="">Minigame</a></li>
+                        <li><a href="login">Sign Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <p>
+        <h2>This is the StudyScapes - Faculty - Home Page! Welcome!</h2>
+        <table>
+            <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Role</th>
+            </tr>
+            <% results.forEach(function(r) { %>
+                <tr>
+                    <td>
+                        <%= r.uid %>
+                    </td>
+                    <td>
+                        <%= r.uname %>
+                    </td>
+                    <td>
+                        <%= r.password %>
+                    </td>
+                    <td>
+                        <%= r.role %>
+                    </td>
+                </tr>
+                <% }); %>
+        </table>
+    </p>
+    </p>
+</body>
+
+</html>

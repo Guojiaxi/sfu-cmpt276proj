@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/study_scapes.css" />
+    <title>StudyScapes Home Page - Student</title>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li>
+                    <a href="home_st" class="active"><span></span>Home - Student</a>
+                </li>
+                <li>
+                    <ul>
+                        <li><a href="">Plan Meeting</a></li>
+                        <li><a href="">Room Finder</a></li>
+                        <li><a href="">Minigame</a></li>
+                        <li><a href="login">Sign Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <p>
+        <h2>This is the StudyScapes - Student - Home Page! Welcome!</h2>
+        <table>
+            <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Role</th>
+            </tr>
+            <% results.forEach(function(r) { %>
+                <tr>
+                    <td>
+                        <%= r.uid %>
+                    </td>
+                    <td>
+                        <%= r.uname %>
+                    </td>
+                    <td>
+                        <%= r.password %>
+                    </td>
+                    <td>
+                        <%= r.role %>
+                    </td>
+                </tr>
+                <% }); %>
+        </table>
+    </p>
+</body>
+
+</html>
