@@ -1,0 +1,49 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: cornflowerblue;
+    top: 0;
+    width: 100%;
+    position: sticky;
+}
+
+li {
+    float: left;
+    border-right: 1px solid;
+    border-color: aliceblue;
+}
+
+li a {
+    display: block;
+    color: aliceblue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: larger;
+}
+
+li a:hover {
+    background-color: dodgerblue;
+}
+
+.active {
+    background-color: darkslategray;
+}
+
+body {
+    background-color: honeydew;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+}
+
+.button {
+    background-color: cornflowerblue;
+    color: aliceblue;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: larger;
+    border: none;
+}
