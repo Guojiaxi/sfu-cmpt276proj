@@ -7,7 +7,10 @@
 const createMap = ({ lat, lng }) => {
   return new google.maps.Map(document.getElementById('map'), {
     center: { lat, lng },
-    zoom: 15
+    zoom: 15,
+    mapTypeControlOptions: { mapTypeIds: [] },
+    mapTypeId: 'roadmap',
+    streetViewControl: false
   });
 };
 
