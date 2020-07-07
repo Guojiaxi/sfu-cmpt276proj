@@ -3,13 +3,25 @@
     <head>
         <title>Burnaby Campus Map</title>
         <link rel="stylesheet" type="text/css" href="/stylesheets/study_scapes.css">
+        <style>
+            #map {
+                align-self: center;
+                height: 80%;
+                width: 80%;
+            }
+            html, body {
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+          </style>
     </head>
     <body>
         <nav>
             <div>
                 <ul>
                     <li>
-                        <a href="home_fa" class="active"><span></span>Home - Faculty</a>
+                        <a href="" class="active"><span></span>Home - Faculty</a>
                     </li>
                     <li>
                         <ul>
@@ -23,7 +35,8 @@
             </div>
         </nav>
         <div id="map">
-            <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+            
         </div>
+        <script type="text/javascript" src="/js/burnabymap.js"></script>
     </body>
 </html>
