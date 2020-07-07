@@ -7,7 +7,10 @@ const { Pool } = require('pg');
 const { REFUSED } = require('dns');
 var pool;
 pool = new Pool({
-    connectionString: process.env.DATABASE_URL || 'postgres://postgres:cmpt276@localhost/study_scapes'
+    connectionString: process.env.DATABASE_URL || 
+                      /* change this according to your local postgres password */
+                      //'postgres://postgres:cmpt276@localhost/study_scapes'
+                      'postgres://postgres:root@localhost/study_scapes'
 })
 
 //Express 
@@ -23,6 +26,14 @@ app.set('view engine', 'ejs')
 //Get for main page - login
 app.get('/', (req, res) => res.render('pages/login'))
 app.get('/login', (req, res) => res.render('pages/login'))
+app.get('burnaby/map', (req, res) => res.render('pages/burnabymap'))
+app.get('burnaby/events')
+app.get('/dashboard/:user_id/profile')
+app.get('/dashboard/:user_id/schedule')
+app.get('/dashboard/:user_id/schedule/create')
+
+// for admin only
+app.get('/admin/database')
 
 //Post for login & password
 //Will send the user to the appropriate home page (faculty or student)
