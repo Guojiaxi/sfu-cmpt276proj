@@ -16,7 +16,7 @@ pool = new Pool({
         //'postgres://postgres:root@localhost/study_scapes'
 })
 
-//Express 
+//Express
 var app = express();
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
@@ -32,7 +32,7 @@ app.get('/login', (req, res) => res.render('pages/login'))
 app.get('/sign_up', (req, res) => res.render('pages/sign_up'))
 app.get('/about_app', (req, res) => res.render('pages/about_app'))
 app.get('/about_team', (req, res) => res.render('pages/about_team'))
-app.get('/burnaby/map', (req, res) => res.render('pages/burnabymap'))
+app.get('/burnabymap', (req, res) => res.render('pages/burnabymap'))
 app.get('/burnaby/events')
 app.get('/dashboard/:user_id/profile')
 app.get('/dashboard/:user_id/schedule')
