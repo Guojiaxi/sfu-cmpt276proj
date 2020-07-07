@@ -4,13 +4,16 @@ const PORT = process.env.PORT || 5000
 
 //Pool connection string
 const { Pool } = require('pg');
-const { REFUSED } = require('dns');
+
+/* Not sure what this is, but it breaks things?? */
+//const { REFUSED } = require('dns');
+
 var pool;
 pool = new Pool({
-    connectionString: process.env.DATABASE_URL || 
-                      /* change this according to your local postgres password */
-                      //'postgres://postgres:cmpt276@localhost/study_scapes'
-                      'postgres://postgres:root@localhost/study_scapes'
+    connectionString: process.env.DATABASE_URL ||
+        /* change this according to your local postgres password */
+        'postgres://postgres:cmpt276@localhost/study_scapes'
+        //'postgres://postgres:root@localhost/study_scapes'
 })
 
 //Express 
@@ -26,6 +29,9 @@ app.set('view engine', 'ejs')
 //Get for main page - login
 app.get('/', (req, res) => res.render('pages/login'))
 app.get('/login', (req, res) => res.render('pages/login'))
+app.get('/sign_up', (req, res) => res.render('pages/sign_up'))
+app.get('/about_app', (req, res) => res.render('pages/about_app'))
+app.get('/about_team', (req, res) => res.render('pages/about_team'))
 app.get('burnaby/map', (req, res) => res.render('pages/burnabymap'))
 app.get('burnaby/events')
 app.get('/dashboard/:user_id/profile')
@@ -74,10 +80,26 @@ app.post('/login', (req, res) => {
                 } else {
                     res.render('pages/home_student', results);
                 }
-
             }
         }
+    });
+})
 
+//Post for account creation
+//Will send user back to login page after sign up
+app.post('/sign_up', (req, res) => {
+    uname = req.body.username;
+    pass = req.body.password;
+    role = req.body.role;
+
+    //Add new row to table
+    var signupQuery = 'INSERT INTO login (uname, password, role) VALUES (\'' + uname + '\', \'' + pass + '\', \'' + role + '\')';
+    pool.query(signupQuery, (error, result) => {
+        if (error) {
+            res.redirect('/sign_up');
+        } else {
+            res.redirect('/login');
+        }
     });
 
 })

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/study_scapes.css" />
+    <title>StudyScapes Login Page</title>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li>
+                    <a href="login"><span></span>Login</a>
+                </li>
+                <li>
+                    <ul>
+                        <li><a href="sign_up" class="active">Sign up</a></li>
+                        <li><a href="about_team">About the Team</a></li>
+                        <li><a href="about_app">StudyScapes - The App</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <p>
+        <h2>Create an account - to access StudyScapes!</h2>
+        <form method="POST" action="/sign_up">
+            <p>
+                <h3>Username</h3>
+                <input type="text" name="username" id="username" value="" placeholder="Username">
+                <br>
+
+                <h3>Password</h3>
+                <input type="password" name="password" id="password" value="" placeholder="Password">
+                <br>
+
+                <h3>Role</h3>
+                <select name="role">
+                    <option value="" selected disabled hidden>
+                        Select Role
+                    </option>
+                    <option value="student">Student</option>
+                    <option value="faculty">Faculty</option>
+                </select>
+                <br>
+            </p>
+            <br>
+            <p>
+                <input type="submit" class="button" value="Sign Up">
+            </p>
+        </form>
+    </p>
+</body>
+
+</html>

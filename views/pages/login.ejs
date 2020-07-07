@@ -15,8 +15,8 @@
                 </li>
                 <li>
                     <ul>
-                        <li><a href="">About the Team</a></li>
-                        <li><a href="">StudyScapes - The App</a></li>
+                        <li><a href="about_team">About the Team</a></li>
+                        <li><a href="about_app">StudyScapes - The App</a></li>
                     </ul>
                 </li>
             </ul>
@@ -27,11 +27,12 @@
         <h2>Login here - as student or faculty - to access StudyScapes!</h2>
         <form method="POST" action="/login">
             <p>
-                <input type="test" name="username" id="username" value="" placeholder="Username">
+                <input type="text" name="username" id="username" value="" placeholder="Username"> &nbsp;
                 <input type="password" name="password" id="password" value="" placeholder="Password">
             </p>
             <p>
                 <input type="submit" class="button" value="Login">
+                <a href="sign_up"><input type="button" class="button" value="Create an Account"></a>
             </p>
         </form>
         <div id="login_result" class="login_result"></div>
