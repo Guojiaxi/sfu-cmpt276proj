@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 5000
  */
 var express = require('express');
 require('dotenv').config();
-const PORT = process.env.PORT || 'postgres://postgres:cmpt276@localhost/study_scapes'
+const PORT = process.env.DATABASE_URL || 'postgres://postgres:cmpt276@localhost/study_scapes'
 
 var flash = require('connect-flash'); //middleware to notify user
 
