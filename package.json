@@ -1,33 +1,46 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.3.0",
-  "description": "A sample Node.js app using Express 4",
-  "engines": {
-    "node": "12.x"
-  },
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
-  },
-  "dependencies": {
-    "ejs": "^2.7.4",
-    "express": "^4.17.1",
-    "nodemon": "^2.0.4",
-    "pg": "^8.2.1"
-  },
-  "devDependencies": {
-    "got": "^11.3.0",
-    "tape": "^4.7.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
-  },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
-  "license": "MIT"
+    "name": "node-js-getting-started",
+    "version": "0.3.0",
+    "description": "A sample Node.js app using Express 4",
+    "engines": {
+        "node": "12.x"
+    },
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "test": "node test.js"
+    },
+    "dependencies": {
+        "bcrypt": "^5.0.0",
+        "body-parser": "^1.19.0",
+        "cookie-parser": "^1.4.5",
+        "dotenv": "^8.2.0",
+        "ejs": "^2.7.4",
+        "express": "^4.17.1",
+        "express-flash": "0.0.2",
+        "express-session": "^1.17.1",
+        "jQuery": "^1.7.4",
+        "jquery": "^3.5.1",
+        "node-gyp": "^7.0.0",
+        "nodemon": "^2.0.4",
+        "os": "^0.1.1",
+        "passport": "^0.4.1",
+        "passport-local": "^1.0.0",
+        "pg": "^8.2.2",
+        "request": "^2.88.2"
+    },
+    "devDependencies": {
+        "got": "^11.3.0",
+        "tape": "^4.7.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Guojiaxi/sfu-cmpt276proj"
+    },
+    "keywords": [
+        "node",
+        "heroku",
+        "express"
+    ],
+    "license": "MIT"
 }

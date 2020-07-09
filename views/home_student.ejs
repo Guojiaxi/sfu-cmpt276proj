@@ -2,8 +2,8 @@
 <html>
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/stylesheets/study_scapes.css" />
-    <title>StudyScapes Home Page - Faculty</title>
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/study_scapes.css" />
+    <title>StudyScapes Home Page - Student</title>
 </head>
 
 <body>
@@ -11,14 +11,15 @@
         <div>
             <ul>
                 <li>
-                    <a href="home_fa" class="active"><span></span>Home - Faculty</a>
+                    <a href="home" class="active"><span></span>Home - Student</a>
                 </li>
                 <li>
                     <ul>
-                        <li><a href="">Review/Request Meetups</a></li>
-                        <li><a href="">Room Finder</a></li>
-                        <li><a href="">Minigame</a></li>
-                        <li><a href="login">Sign Out</a></li>
+                        <li><a href=>Request/View Meetups</a></li>
+                        <li><a href=>Room Finder</a></li>
+                        <li><a href=>Minigame</a></li>
+                        <li><a href="burnaby_map">View Your Location</a></li>
+                        <li><a href="logout">Sign Out</a></li>
                     </ul>
                 </li>
             </ul>
@@ -26,12 +27,11 @@
     </nav>
 
     <p>
-        <h2>This is the StudyScapes - Faculty - Home Page! Welcome!</h2>
+        <h2>This is the StudyScapes - Student - Home Page! Welcome!</h2>
         <table>
             <tr>
                 <th>User ID</th>
                 <th>Username</th>
-                <th>Password</th>
                 <th>Role</th>
             </tr>
             <% results.forEach(function(r) { %>
@@ -40,10 +40,7 @@
                         <%= r.uid %>
                     </td>
                     <td>
-                        <%= r.uname %>
-                    </td>
-                    <td>
-                        <%= r.password %>
+                        <%= r.username %>
                     </td>
                     <td>
                         <%= r.role %>
@@ -51,7 +48,6 @@
                 </tr>
                 <% }); %>
         </table>
-    </p>
     </p>
 </body>
 
