@@ -47,6 +47,7 @@ This application, StudyScapes, will allow users to login to their account and vi
 [Faculty Page UI](images/UIMockup_Faculty.JPG)
 [Minigame Page UI](images/UIMockup_Minigame.JPG)
 [Events Page UI](images/UIMockup_Events.JPG)
+[Admin Page UI](images/UIMockup_Admin.JPG)
 
 
 ## Meeting 1 Overview
@@ -59,12 +60,36 @@ This application, StudyScapes, will allow users to login to their account and vi
     - Generate a unique link that anyone can use to download the file
 
 - Goals for iteration 1:
-    - [ ] At least twice the user stories/scenarios
-    - [ ] Implement user database
-    - [ ] Completed login
-    - [ ] More Socket.io research – for a better understanding of it’s uses
-    - [ ] A full layout in code (minimum html) for each view and login
-    - [ ] Add more types of users? TAs/Tutors?
+    - At least twice the user stories/scenarios
+    - Implement user database
+    - Completed login
+    - More Socket.io research – for a better understanding of it’s uses
+    - A full layout in code (minimum html) for each view and login
+    - Add more types of users? TAs/Tutors?
+
+## Iteration 1 Updates
+
+## Customers
+- **Faculty**: Teachers and TAs at Simon Fraser University that would like to interact in a convenient way with students, plan meetings, coordinate meeting locations, schedule or find events on campus, and enjoy minigames.  
+- **Students**: Students at Simon Fraser University that would like to communicate with all their professors or TAs in one convenient application. They would like to meet with other students or faculty at SFU, get assistance in finding their way around the school, find specific buildings or rooms, schedule or find events on campus, meet other students, or just have fun through minigames.
+
+## Competitive Analysis
+What makes StudyScapes so unique is that it applies specifically to the Simon Fraser University Burnaby Campus. It incorporates ideas from many other successful programs into one main application for ease of access. Although Google Maps is useful, it does not provide a detailed view of the Burnaby Campus. StudyScapes will elaborate on the map with this campus in mind, allowing for much more extensive interaction and location finding around the University. SFU Snap was an inspiration for this, as it helped students to search for and travel between rooms and buildings across campus. StudyScapes expands this to allow for scheduling events and meetings around campus with students and faculty alike. It also provides icebreakers for students in the form of minigames and different views for faculty and students, so that each user sees the information that directly applies to their own needs.  
+
+## User Stories - Actors
+- **Faculty** (Professors and Teaching Assistants) that can view and cancel meetings. They can also interact with students, view the map, view and schedule events, and play minigames. Students can view, request, reschedule, and cancel meetings with Faculty and other students. They can view and schedule events, view the map for specific rooms and buildings, and play minigames.
+- **Students** can view, request, reschedule, and cancel meetings with Faculty and other students. They can view and schedule events, view the map for specific rooms and buildings, and play minigames.
+- **Admin** can view all database content including usernames, roles, meetings, and much more. The admin account is used for verification of debugging purposes. For the sake of security and privacy of users, the admin can only view hashed passwords.
+*User stories added to this iteration can be found in the requirements document for iteration 1*
+
+## Database Plan - Iterations 1 & 2
+- *CREATE TABLE login(uid SERIAL PRIMARY KEY, username char(20) NOT NULL, password char(60) NOT NULL, role char(20) NOT NULL) WITH (oids = false);*
+- *CREATE TABLE meetup(mid SERIAL PRIMARY KEY, date  DATE NOT NULL, time TIME NOT NULL, location char(10) NOT NULL, isPending boolean NOT NULL, isCancelled boolean NOT NULL);*
+- *CREATE TABLE meetup_user(mid INT NOT NULL, uid INT NOT NULL, FOREIGN KEY (mid) REFERENCES meetup (uid), FOREIGN KEY (uid) REFERENCES login (uid));*
+
+## Meeting 2 Overview
+Our team discussed separating SFU’s Room Finder from our Google map. More research is needed regarding Room Finder and Esri. Our map should be for seeing building locations, nearby students, and current events while Room Finder should be solely used for finding classrooms. We also decided to add an Admin user who can view all database tables for ease of debugging and monitoring. The plan in iteration 2 will have Celina implement the Meeting Scheduling System, and Josh implement the Events database and integrate Events with the map. Parth plans to start designing minigames, and Mandeepa is looking into sockets to continue work on a messaging system between application users.
+
 
 ## URLs
 - GitHub Repository: https://github.com/Guojiaxi/sfu-cmpt276proj.git
