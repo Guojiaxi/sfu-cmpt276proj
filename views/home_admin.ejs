@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/study_scapes.css" />
+    <title>StudyScapes Home Page - Admin</title>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li>
+                    <a href="home" class="active"><span></span>View All User Logins</a>
+                </li>
+                <li>
+                    <ul>
+                        <li><a href=>View All Meetups</a></li>
+                        <li><a href="logout">Sign Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <p>
+        <h2>Admin Home Page</h2>
+        <table>
+            <tr>
+                <th>User ID</th>
+                <th>Username</th>
+                <th>Password - Should be Hashed!</th>
+                <th>Role</th>
+            </tr>
+            <% results.forEach(function(r) { %>
+                <tr>
+                    <td>
+                        <%= r.uid %>
+                    </td>
+                    <td>
+                        <%= r.username %>
+                    </td>
+                    <td>
+                        <%= r.password %>
+                    </td>
+                    <td>
+                        <%= r.role %>
+                    </td>
+                </tr>
+                <% }); %>
+        </table>
+    </p>
+    </p>
+</body>
+
+</html>
