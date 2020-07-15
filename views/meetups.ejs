@@ -11,11 +11,11 @@
         <div>
             <ul>
                 <li>
-                    <a href="home" class="active"><span></span>View All User Logins</a>
+                    <a href="home"><span></span>View All User Logins</a>
                 </li>
                 <li>
                     <ul>
-                        <li><a href="meetup">View All Meetups</a></li>
+                        <li><a href="meetup" class="active">View All Meetups</a></li>
                         <li><a href="logout">Sign Out</a></li>
                     </ul>
                 </li>
@@ -27,24 +27,36 @@
         <h2>Admin Home Page</h2>
         <table>
             <tr>
-                <th>User ID</th>
-                <th>Username</th>
-                <th>Password - Should be Hashed!</th>
-                <th>Role</th>
+                <th>Meeting ID</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Users</th>
+                <th>Meetup is Pending</th>
+                <th>Meetup is Cancelled</th>
             </tr>
             <% results.forEach(function(r) { %>
                 <tr>
                     <td>
-                        <%= r.uid %>
+                        <%= r.mid %>
                     </td>
                     <td>
-                        <%= r.username %>
+                        <%= r.date %>
                     </td>
                     <td>
-                        <%= r.password %>
+                        <%= r.time %>
                     </td>
                     <td>
-                        <%= r.role %>
+                        <%= r.location %>
+                    </td>
+                    <td>
+                        <%= r.users %>
+                    </td>
+                    <td>
+                        <%= r.ispending %>
+                    </td>
+                    <td>
+                        <%= r.iscancelled %>
                     </td>
                 </tr>
                 <% }); %>

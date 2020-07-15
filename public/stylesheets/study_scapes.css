@@ -30,7 +30,7 @@ li a:hover,
 }
 
 .active {
-    background-color: darkslategray;
+    background-color: darkslategrey;
 }
 
 body {
@@ -51,4 +51,31 @@ body {
 
 .bold {
     font-weight: bold;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid darkslategrey;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid darkslategrey;
+}
+
+tr:nth-child(even) {
+    background-color: gainsboro;
+}
+
+tr:nth-child(odd) {
+    background-color: aliceblue;
+}
+
+th {
+    background-color: cornflowerblue;
+    color: white;
+    border: 1px solid darkslategrey;
 }
