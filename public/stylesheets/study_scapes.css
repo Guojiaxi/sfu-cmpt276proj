@@ -49,6 +49,16 @@ body {
     border: none;
 }
 
+.button_sm {
+    background-color: cornflowerblue;
+    color: aliceblue;
+    text-align: center;
+    padding: 12px 14px;
+    text-decoration: none;
+    font-size: medium;
+    border: none;
+}
+
 .bold {
     font-weight: bold;
 }

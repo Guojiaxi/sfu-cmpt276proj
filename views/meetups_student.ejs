@@ -30,6 +30,7 @@
         <h2>Student Home Page</h2>
         <table>
             <tr>
+                <th></th>
                 <th>Meeting ID</th>
                 <th>Date</th>
                 <th>Time</th>
@@ -40,6 +41,10 @@
             </tr>
             <% results.forEach(function(r) { %>
                 <tr>
+                    <td>
+                        <p><input type="submit" class="button_sm" value="Edit Meetup"> </p>
+                        <p><input type="submit" class="button_sm" value="Cancel Meetup"></p>
+                    </td>
                     <td>
                         <%= r.mid %>
                     </td>
