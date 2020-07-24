@@ -79,10 +79,6 @@ function init() {
       lat: 49.2779967,
       lng: -122.9120564
       };
-    const dining_hall = {
-      lat: 49.279883,
-      lng: -122.924668
-      };
     new google.maps.Marker({
       position: aq,
                 map,
@@ -101,12 +97,7 @@ function init() {
       title: "Cornerstone!",
       label:"Cornerstone"
       });
-    new google.maps.Marker({
-      position: dining_hall,
-                map,
-      title: "Dining Hall!",
-      label:"Dining Hall"
-      });
+    
 
 
 
