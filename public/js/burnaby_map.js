@@ -71,11 +71,21 @@ function init() {
       lat: 49.278991,
       lng: -122.916498
       };
+    const convo_mall = {
+      lat: 49.27929157,
+      lng: -122.9188263
+      };
     new google.maps.Marker({
       position: aq,
                 map,
       title: "Hello World!",
       label:"AQ"
+      });
+    new google.maps.Marker({
+      position: aq,
+                map,
+      title: "Hello World!",
+      label:"Convocation Mall"
       });
 
 
