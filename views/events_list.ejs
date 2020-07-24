@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Events on Campus</title>
+        <link rel="stylesheet" type="text/css" href="/public/stylesheets/study_scapes.css">
+    </head>
+
+    <body>
+        <nav>
+            <div>
+                <ul>
+                    <li>
+                        <a href="home"><span></span>Home</a>
+                    </li>
+                    <li>
+                        <ul>
+                            <li><a href="meetup">Meetups</a></li>
+                            <li><a href="room_finder">Room Finder</a></li>
+                            <li><a href=>Minigame</a></li>
+                            <li><a href="burnaby_map">View Your Location</a></li>
+                            <li><a href="burnaby_events" class="active"></a>View Upcoming Events</li>
+                            <li><a href="logout">Sign Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div id="main_frame">
+            <h2>Burnaby Campus Events</h2>
+            <div id="table_frame">
+                <table id="events_table">
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Host</th>
+                        <th>Website</th>
+                        <th>Location</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                    </tr>
+                    <% var i = 1; %>
+                    <% results.array.forEach(function(r) { %>
+                        <tr>
+                            <td>
+                                <%= i %>
+                            </td>
+                            <td>
+                                <%= r.name %>
+                            </td>
+                            <td>
+                                <%= r.host_name %>
+                            </td>
+                            <td>
+                                <%= r.url %>
+                            </td>
+                            <td> <!--If cancelled, location should be 'CANCELLED'-->
+                                <%= r.location %>
+                            </td>
+                            <td>
+                                <%= r.start_date %>
+                                &nbsp;-&nbsp;
+                                <%= r.end_date %>
+                            </td>
+                            <td>
+                                <%= r.start_time %>
+                                &nbsp;-&nbsp;
+                                <%= r.end_time %>
+                            </td>
+                        </tr>
+                        <% i++; %>
+                    <% }); %>
+                </table>
+            </div>
+        </div>
+
+    </body>
+</html>
