@@ -67,6 +67,20 @@ function init() {
     const initialPosition = { lat: 49.278136, lng: -122.920469 };
     const map = createMap(initialPosition);
     const marker = createMarker({ map, position: initialPosition, label: "You are here." });
+    const aq = {
+      lat: 49.278991,
+      lng: -122.916498
+      };
+    new google.maps.Marker({
+      position: aq,
+                map,
+      title: "Hello World!",
+      label:"AQ"
+      });
+
+
+
+
     const $info = document.getElementById('info');
 
     let watchId = trackLocation({
