@@ -67,6 +67,13 @@ function init() {
     const initialPosition = { lat: 49.278136, lng: -122.920469 };
     const map = createMap(initialPosition);
     const marker = createMarker({ map, position: initialPosition, label: "You are here." });
+    var aq = new google.maps.LatLng(49.278991,-122.916498);
+    var marker_aq = new google.maps.Marker({
+    position: aq,
+    title:"Academic Quadrangle",
+    label: "AQ"
+});
+
     const $info = document.getElementById('info');
 
     let watchId = trackLocation({
