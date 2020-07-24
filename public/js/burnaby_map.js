@@ -75,19 +75,38 @@ function init() {
       lat: 49.27929157,
       lng: -122.9188263
       };
+    const cornerstone = {
+      lat: 49.2779967,
+      lng: -122.9120564
+      };
+    const dining_hall = {
+      lat: 49.279883,
+      lng: -122.924668
+      };
     new google.maps.Marker({
       position: aq,
                 map,
-      title: "Hello World!",
+      title: "AQ!",
       label:"AQ"
       });
     new google.maps.Marker({
       position: convo_mall,
                 map,
-      title: "Hello World!",
+      title: "Convocation Mall!",
       label:"Convocation Mall"
       });
-
+    new google.maps.Marker({
+      position: cornerstone,
+                map,
+      title: "Cornerstone!",
+      label:"Cornerstone"
+      });
+    new google.maps.Marker({
+      position: dining_hall,
+                map,
+      title: "Dining Hall!",
+      label:"Dining Hall"
+      });
 
 
 
