@@ -82,7 +82,7 @@ function init() {
       label:"AQ"
       });
     new google.maps.Marker({
-      position: aq,
+      position: convo_mall,
                 map,
       title: "Hello World!",
       label:"Convocation Mall"
