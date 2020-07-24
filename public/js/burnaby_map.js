@@ -67,14 +67,15 @@ function init() {
     const initialPosition = { lat: 49.278136, lng: -122.920469 };
     const map = createMap(initialPosition);
     const marker = createMarker({ map, position: initialPosition, label: "You are here." });
-    const myLatLngg = {
+    const aq = {
       lat: 49.278991,
       lng: -122.916498
       };
     new google.maps.Marker({
-      position: myLatLngg,
+      position: aq,
                 map,
-      title: "Hello World!"
+      title: "Hello World!",
+      label:"AQ"
       });
 
 
