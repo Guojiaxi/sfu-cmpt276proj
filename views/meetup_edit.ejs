@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/study_scapes.css" />
+    <title>StudyScapes Meetup Edit Page</title>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li>
+                    <a href="home"><span></span>View All User Logins</a>
+                </li>
+                <li>
+                    <ul>
+                        <li><a href="meetup">View All Meetups</a></li>
+                        <li><a href="meetup_edit" class="active">Edit a Meetup</a></li>
+                        <li><a href="logout">Sign Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <p>
+        <h2>Meetup Edit Page</h2>
+        <form method="POST" action="meetup_edit_submit">
+            <p>
+
+                <table>
+                    <tr>
+                        <th>Meeting ID</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Location</th>
+                    </tr>
+                    <% results.forEach(function(r) { %>
+                        <tr>
+                            <td>
+                                <input type="number" name="mid" value="<%= r.mid %>" readonly>
+                            </td>
+
+                            <td>
+                                <input type="date" name="date" value="<%= r.date %>" placeholder="Date">
+                            </td>
+                            <td>
+                                <input type="time" name="time" value="<%= r.time %>" placeholder="Time">
+                            </td>
+                            <td>
+                                <select name="location">
+                                    <option value="<%= r.location %>" selected hidden>
+                                        <%= r.location %>
+                                    </option>
+                                    <option value="AQ">AQ</option>
+                                    <option value="ALCAN">ALCAN</option>
+                                    <option value="ASB">ASB</option>
+                                    <option value="BLU">BLU</option>
+                                    <option value="CONVO">CONVO</option>
+                                    <option value="DAC">DAC</option>
+                                    <option value="EDB">EDB</option>
+                                    <option value="RCB">ECB</option>
+                                    <option value="SSB">SSB</option>
+                                    <option value="TASC1">TASC1</option>
+                                    <option value="TASC2">TASC2</option>
+                                    <option value="LIB">LIB</option>
+                                    <option value="WMC">WMC</option>
+                                  </select>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </table>
+                <p>
+                    <input type="submit" name="btnEdit" class="button" value="Edit Meetup">
+                </p>
+            </p>
+        </form>
+    </p>
+</body>
+
+</html>
