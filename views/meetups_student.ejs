@@ -3,7 +3,7 @@
 
 <head>
     <link rel="stylesheet" type="text/css" href="/public/stylesheets/study_scapes.css" />
-    <title>StudyScapes Home Page - Student</title>
+    <title>StudyScapes Meetups Page - Student</title>
 </head>
 
 <body>
@@ -27,10 +27,9 @@
     </nav>
 
     <p>
-        <h2>Student Home Page</h2>
+        <h2>Student Meetups Page</h2>
         <table>
             <tr>
-                <th></th>
                 <th>Meeting ID</th>
                 <th>Date</th>
                 <th>Time</th>
@@ -41,10 +40,6 @@
             </tr>
             <% results.forEach(function(r) { %>
                 <tr>
-                    <td>
-                        <p><input type="submit" class="button_sm" value="Edit Meetup"></p>
-                        <p><input type="submit" class="button_sm" value="Cancel Meetup"></p>
-                    </td>
                     <td>
                         <%= r.mid %>
                     </td>
@@ -70,6 +65,33 @@
                 <% }); %>
         </table>
     </p>
+    <h3>Enter a Meeting ID here to edit it</h3>
+    <form method="POST" action="/meetup_edit">
+        <p>
+            <input type="number" name="mid" value="" placeholder="Meetup ID">
+            <br>
+        </p>
+
+        <p>
+            <input type="submit" name="btnEdit" class="button_sm" value="Edit a Meetup">
+        </p>
+    </form>
+    <br>
+    <hr>
+    <h3>Or enter a Meetup ID here to cancel it</h3>
+    <form method="POST" action="/meetup_cancel">
+        <p>
+            <input type="number" name="mid" value="" placeholder="Meetup ID">
+            <br>
+        </p>
+
+        <p>
+            <input type="submit" name="btnCancel" class="button" value="Cancel a Meeting">
+        </p>
+    </form>
+    <br>
+    <p>
+        Want to request a new meeting? <a href="meetup_request">Click Here!</a>
     </p>
 </body>
 
