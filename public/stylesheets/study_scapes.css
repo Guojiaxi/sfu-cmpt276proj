@@ -39,6 +39,7 @@ body {
     font-size: large;
 }
 
+a.button,
 .button {
     background-color: cornflowerblue;
     color: aliceblue;
