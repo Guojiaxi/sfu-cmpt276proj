@@ -64,7 +64,6 @@ const getPositionErrorMessage = code => {
  * Automatically called by the google maps API once it's loaded.
  */
 function init() {
-    c
     const initialPosition = { lat: 49.278136, lng: -122.920469 };
     const map = createMap(initialPosition);
     const marker = createMarker({ map, position: initialPosition, label: "You are here." });
