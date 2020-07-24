@@ -13,8 +13,8 @@ var pool;
 pool = new Pool({
     connectionString: process.env.DATABASE_URL ||
         /* change this according to your local postgres password */
-        'postgres://postgres:cmpt276@localhost/study_scapes'
-        //'postgres://postgres:root@localhost/study_scapes'
+        //'postgres://postgres:cmpt276@localhost/study_scapes'
+        'postgres://postgres:root@localhost/study_scapes' // josh's local db
 })
 
 var flash = require('connect-flash'); //middleware to notify user

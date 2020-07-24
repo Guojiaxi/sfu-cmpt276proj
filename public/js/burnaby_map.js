@@ -64,9 +64,22 @@ const getPositionErrorMessage = code => {
  * Automatically called by the google maps API once it's loaded.
  */
 function init() {
+    const myLatLngg = {
+      lat: 49.278136,
+      lng: -122.920469
+      };
+      new google.maps.Marker({
+    position: myLatLngg,
+    map,
+    title: "Hello World!"
+  });
     const initialPosition = { lat: 49.278136, lng: -122.920469 };
     const map = createMap(initialPosition);
+
     const marker = createMarker({ map, position: initialPosition, label: "You are here." });
+    const aq = new google.maps.LatLng(49.278991,-122.916498);
+
+
     const $info = document.getElementById('info');
 
     let watchId = trackLocation({
