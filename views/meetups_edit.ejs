@@ -44,7 +44,7 @@
                             </td>
 
                             <td>
-                                <input type="date" name="date" value="<%= r.date %>" placeholder="Date">
+                                <input type="date" name="date" value="<%= r.date.toISOString().substring(0, 10) %>" placeholder="Date">
                             </td>
                             <td>
                                 <input type="time" name="time" value="<%= r.time %>" placeholder="Time">

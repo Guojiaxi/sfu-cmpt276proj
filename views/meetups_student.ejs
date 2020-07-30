@@ -45,7 +45,7 @@
                         <%= r.mid %>
                     </td>
                     <td>
-                        <%= r.date %>
+                        <%= r.date.toDateString() %>
                     </td>
                     <td>
                         <%= r.time %>
@@ -57,10 +57,10 @@
                         <%= r.users %>
                     </td>
                     <td>
-                        <%= r.ispending %>
+                        <%= r.is_pending %>
                     </td>
                     <td>
-                        <%= r.iscancelled %>
+                        <%= r.is_cancelled %>
                     </td>
                 </tr>
                 <% }); %>
