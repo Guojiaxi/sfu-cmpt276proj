@@ -55,6 +55,7 @@ app.set('view options', { layout: false });
 
 require('./lib/routes.js')(app); //might need this to contain routes and logic
 
+//add
 /*
 //identifies current chat
 var chatID;
