@@ -45,7 +45,8 @@
                         <%= r.mid %>
                     </td>
                     <td>
-                        <%= r.date %>
+                        <!-- need date string to avoid printing time -->
+                        <%= r.date.toDateString() %>
                     </td>
                     <td>
                         <%= r.time %>
@@ -66,6 +67,30 @@
                 <% }); %>
         </table>
     </p>
+    <h3>Enter a Meeting ID here to confirm the request/update</h3>
+    <form method="POST" action="/meetup_confirm">
+        <p>
+            <input type="number" name="mid" value="" placeholder="Meetup ID">
+            <br>
+        </p>
+
+        <p>
+            <input type="submit" name="btnConfirm" class="button_sm" value="Confirm a Meetup">
+        </p>
+    </form>
+    <br>
+    <hr>
+    <h3>Or enter a Meetup ID here to remove a cancellation</h3>
+    <form method="POST" action="/meetup_remove">
+        <p>
+            <input type="number" name="mid" value="" placeholder="Meetup ID">
+            <br>
+        </p>
+
+        <p>
+            <input type="submit" name="btnRemove" class="button" value="Remove a Cancelled Meeting">
+        </p>
+    </form>
 </body>
 
 </html>
