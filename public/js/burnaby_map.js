@@ -15,16 +15,6 @@ const createMap = ({ lat, lng }) => {
 };
 
 /**
- * Create google maps Marker instance.
- * @param {Object} map
- * @param {Object} position
- * @return {Object}
- */
-const createMarker = ({ map, position, label }) => {
-    return new google.maps.Marker({ map, position, label });
-};
-
-/**
  * Track the user location.
  * @param {Object} onSuccess
  * @param {Object} [onError]
@@ -59,6 +49,9 @@ const getPositionErrorMessage = code => {
     }
 }
 
+// array of markers for each location in locationArray
+var locationMarkers = [];
+
 /**
  * Initialize the application.
  * Automatically called by the google maps API once it's loaded.
@@ -66,40 +59,22 @@ const getPositionErrorMessage = code => {
 function init() {
     const initialPosition = { lat: 49.278136, lng: -122.920469 };
     const map = createMap(initialPosition);
-    const marker = createMarker({ map, position: initialPosition, label: "You are here." });
-    const aq = {
-      lat: 49.278991,
-      lng: -122.916498
-      };
-    const convo_mall = {
-      lat: 49.27929157,
-      lng: -122.9188263
-      };
-    const cornerstone = {
-      lat: 49.2779967,
-      lng: -122.9120564
-      };
-    new google.maps.Marker({
-      position: aq,
-                map,
-      title: "AQ!",
-      label:"AQ"
-      });
-    new google.maps.Marker({
-      position: convo_mall,
-                map,
-      title: "Convocation Mall!",
-      label:"Convocation Mall"
-      });
-    new google.maps.Marker({
-      position: cornerstone,
-                map,
-      title: "Cornerstone!",
-      label:"Cornerstone"
-      });
-    
 
+    const marker = new google.maps.Marker({
+        position: initialPosition,
+        map: map,
+        title: "You!",
+        label: "You are here."
+    });
 
+    locationArray.forEach(function(location) {
+        locationMarkers.push(new google.maps.Marker({
+            position: {lat: location.lat, lng: location.lng},
+            map: map,
+            title: location.title,
+            label: location.id
+        }));
+    });
 
     const $info = document.getElementById('info');
 
@@ -131,7 +106,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "AQ.jpg",
         type: "building",
         icon: "default",
-        id: "aq"
+        id: "AQ"
     },
     {
         title: "Alcan Aquatic Research Centre",
@@ -141,7 +116,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "ALCAN.jpg",
         type: "building",
         icon: "default",
-        id: "alcan"
+        id: "AAB"
     },
     {
         title: "Animal Care Centre",
@@ -151,7 +126,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "animalcare.jpg",
         type: "building",
         icon: "default",
-        id: "animal"
+        id: "ACF"
     },
     {
         title: "Applied Sciences Building",
@@ -161,7 +136,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "ASB.jpg",
         type: "building",
         icon: "default",
-        id: "applied"
+        id: "ASB"
     },
     {
         title: "Bee Research Building",
@@ -171,17 +146,17 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "bee.jpg",
         type: "building",
         icon: "default",
-        id: "bee"
+        id: "BEE"
     },
     {
-        title: "Beedie Field",
+        title: "Beedie Field Concession",
         lat: 49.278737,
         lng: -122.926181,
-        description: "<h2>Beedie Field</h2><p>Beedie Field is the northernmost collegiate softball playing field in North America and the only National Collegiate Athletic Association field outside the United States.</p>",
+        description: "<h2>Beedie Field Concession</h2><p>Beedie Field is the northernmost collegiate softball playing field in North America and the only National Collegiate Athletic Association field outside the United States.</p>",
         photoname: "beedie.jpg",
         type: "building",
         icon: "default",
-        id: "beedie"
+        id: "BFC"
     },
     {
         title: "Blusson Hall",
@@ -191,7 +166,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "BLU.png",
         type: "building",
         icon: "default",
-        id: "blusson"
+        id: "BLU"
     },
     {
         title: "Convocation Mall",
@@ -201,7 +176,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "CONVO.jpg",
         type: "building",
         icon: "default",
-        id: "convocation"
+        id: "CML"
     },
     {
         title: "Cornerstone",
@@ -211,7 +186,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "CORNER.jpg",
         type: "building",
         icon: "default",
-        id: "cornerstone"
+        id: "CSTN"
     },
     {
         title: "Childcare Centre",
@@ -221,7 +196,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "CHILD.jpg",
         type: "building",
         icon: "default",
-        id: "childcare"
+        id: "CC"
     },
     {
         title: "Diamond Alumni Centre",
@@ -231,7 +206,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "DAC.jpg",
         type: "building",
         icon: "default",
-        id: "diamond"
+        id: "DAC"
     },
     {
         title: "Dining Hall",
@@ -241,7 +216,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "DH.jpg",
         type: "building",
         icon: "default",
-        id: "dining"
+        id: "DH"
     },
     {
         title: "Discovery Park 1",
@@ -251,7 +226,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "discovery1.jpg",
         type: "building",
         icon: "default",
-        id: "discovery1"
+        id: "DIS1"
     },
     {
         title: "Discovery Park 2",
@@ -261,7 +236,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "discovery2.jpg",
         type: "building",
         icon: "default",
-        id: "discovery2"
+        id: "DIS2"
     },
     {
         title: "Education Building",
@@ -271,7 +246,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "edb.jpg",
         type: "building",
         icon: "default",
-        id: "education"
+        id: "EDB"
     },
 
     {
@@ -282,7 +257,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "elementary.jpg",
         type: "building",
         icon: "default",
-        id: "elementary"
+        id: "UHES"
     },
 
     {
@@ -293,7 +268,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "fm.jpg",
         type: "building",
         icon: "default",
-        id: "facilities"
+        id: "FM"
     },
     {
         title: "Greenhouses",
@@ -303,7 +278,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "gh.jpg",
         type: "building",
         icon: "default",
-        id: "greenhouses"
+        id: "GH"
     },
     {
         title: "Halpern Centre",
@@ -313,7 +288,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "halpern.jpg",
         type: "building",
         icon: "default",
-        id: "halpern"
+        id: "HAL"
     },
     {
         title: "Hamilton Hall",
@@ -323,7 +298,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "HamiltonHall.jpg",
         type: "building",
         icon: "default",
-        id: "hamilton"
+        id: "HAM"
     },
     {
         title: "Images Theatre",
@@ -333,7 +308,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "images.jpg",
         type: "building",
         icon: "default",
-        id: "images"
+        id: "IMG"
     },
     {
         title: "Lorne Davies Complex",
@@ -343,17 +318,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "lorn.jpg",
         type: "building",
         icon: "default",
-        id: "lorne"
-    },
-    {
-        title: "Louis Riel House",
-        lat: 49.27972552,
-        lng: -122.9258108,
-        description: "<h2>Louis Riel House</h2><p>The Louis Riel apartment residence accommodates families, couples and single parents.</p>",
-        photoname: "louis.jpg",
-        type: "building",
-        icon: "default",
-        id: "louis"
+        id: "LDC"
     },
     {
         title: "Madge Hogarth House",
@@ -363,7 +328,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "madge.jpg",
         type: "building",
         icon: "default",
-        id: "madge"
+        id: "MHH"
     },
     {
         title: "Maggie Benston Centre",
@@ -373,7 +338,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "maggie.jpg",
         type: "building",
         icon: "default",
-        id: "maggie"
+        id: "MBC"
     },
     {
         title: "McTaggart Cowan Hall",
@@ -383,37 +348,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "mccow.jpg",
         type: "building",
         icon: "default",
-        id: "mctaggart"
-    },
-    {
-        title: "Visitor Parking - Lot VB",
-        lat: 49.277129,
-        lng: -122.910898,
-        description: "<h2>Visitor Parking - Lot B</h2><p>Visitors please note: all parking at SFU is paid parking.</p>",
-        photoname: "parking-VB.jpg",
-        type: "parking",
-        icon: "parkicon.png",
-        id: "parkvb"
-    },
-    {
-        title: "Visitor Parking - Lot VC",
-        lat: 49.280467,
-        lng: -122.914363,
-        description: "<h2>Visitor Parking - Lot C</h2><p>Visitors please note: all parking at SFU is paid parking.</p>",
-        photoname: "parking-VC.jpg",
-        type: "parking",
-        icon: "parkicon.png",
-        id: "parkvc"
-    },
-    {
-        title: "Visitor Parking - Lot VN",
-        lat: 49.280555,
-        lng: -122.921535,
-        description: "<h2>Visitor Parking - Lot N</h2><p>Visitors please note: all parking at SFU is paid parking.</p>",
-        photoname: "parking-VN.jpg",
-        type: "parking",
-        icon: "parkicon.png",
-        id: "parkvn"
+        id: "MCH"
     },
     {
         title: "Visitor Parking - West Mall Parkade",
@@ -423,77 +358,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "parking-westmall.jpg",
         type: "parking",
         icon: "parkicon.png",
-        id: "parkvwm"
-    },
-    {
-        title: "Visitor Parking - Convocation Mall",
-        lat: 49.279208,
-        lng: -122.918386,
-        description: "<h2>Visitor Parking - Convocation Mall</h2><p>Visitors please note: all parking at SFU is paid parking.</p>",
-        photoname: "parking-convo.jpg",
-        type: "parking",
-        icon: "parkicon.png",
-        id: "parkvcm"
-    },
-    {
-        title: "Parking Lot B",
-        lat: 49.276905,
-        lng: -122.911713,
-        description: "<h2>Parking Lot B</h2><p>Permit parking only.</p>",
-        photoname: "parking-b.jpg",
-        type: "parking",
-        icon: "parkicon.png",
-        id: "parkb"
-    },
-    {
-        title: "Parking Lot C",
-        lat: 49.279865,
-        lng: -122.911788,
-        description: "<h2>Parking Lot C</h2><p>Permit parking only.</p>",
-        photoname: "parking-c.jpg",
-        type: "parking",
-        icon: "parkicon.png",
-        id: "parkc"
-    },
-    {
-        title: "Parking Lot D",
-        lat: 49.27569385,
-        lng: -122.9116917,
-        description: "<h2>Parking Lot D</h2><p>Permit parking only.</p>",
-        photoname: "parking-d.jpg",
-        type: "parking",
-        icon: "parkicon.png",
-        id: "parkd"
-    },
-    {
-        title: "Parking Lot E",
-        lat: 49.27866864,
-        lng: -122.9134405,
-        description: "<h2>Parking Lot E</h2><p>Permit parking only.</p>",
-        photoname: "placeholder.jpg",
-        type: "parking",
-        icon: "parkicon.png",
-        id: "parke"
-    },
-    {
-        title: "Parking Lot F",
-        lat: 49.27592484,
-        lng: -122.9082906,
-        description: "<h2>Parking Lot F</h2><p>Permit parking only.</p>",
-        photoname: "placeholder.jpg",
-        type: "parking",
-        icon: "parkicon.png",
-        id: "parkf"
-    },
-    {
-        title: "Parking Lot G",
-        lat: 49.27693278,
-        lng: -122.908119,
-        description: "<h2>Parking Lot G</h2><p>Permit parking only.</p>",
-        photoname: "parking-g.jpg",
-        type: "parking",
-        icon: "parkicon.png",
-        id: "parkg"
+        id: "VP"
     },
     {
         title: "Residence Office",
@@ -503,7 +368,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "placeholder.jpg",
         type: "building",
         icon: "default",
-        id: "residence"
+        id: "RO"
     },
     {
         title: "Robert. C. Brown Hall",
@@ -513,7 +378,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "rcb.jpg",
         type: "building",
         icon: "default",
-        id: "robert"
+        id: "RCB"
     },
     {
         title: "Saywell Hall",
@@ -523,7 +388,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "saywell.jpg",
         type: "building",
         icon: "default",
-        id: "saywell"
+        id: "SWH"
     },
     {
         title: "Science Research Annex",
@@ -533,17 +398,17 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "SRA.jpg",
         type: "building",
         icon: "default",
-        id: "sra"
+        id: "SRA"
     },
     {
-        title: "SFU Theatre",
+        title: "Leslie & Gordon Diamond Family Auditorium",
         lat: 49.278728,
         lng: -122.918853,
-        description: "<h2>SFU Theatre</h2><p>The SFU Theatre houses professional and student productions in dance, theatre, music and other performing arts.</p>",
+        description: "<h2>Leslie & Gordon Diamond Family Auditorium</h2><p>The Leslie & Gordon Diamond Family Auditorium houses professional and student productions in dance, theatre, music and other performing arts.</p>",
         photoname: "theatre.jpg",
         type: "building",
         icon: "default",
-        id: "theatre"
+        id: "DFA"
     },
     {
         title: "Shell House",
@@ -553,7 +418,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "shell.jpg",
         type: "building",
         icon: "default",
-        id: "shell"
+        id: "SHR"
     },
     {
         title: "Shrum Science Centre - Biology",
@@ -563,7 +428,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "shrum.jpg",
         type: "building",
         icon: "default",
-        id: "shrumb"
+        id: "SCB"
     },
     {
         title: "Shrum Science Centre - Chemistry",
@@ -573,7 +438,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "shrum.jpg",
         type: "building",
         icon: "default",
-        id: "shrumc"
+        id: "SCC"
     },
     {
         title: "Shrum Science Centre - Kinesiology",
@@ -583,7 +448,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "shrum.jpg",
         type: "building",
         icon: "default",
-        id: "shrumk"
+        id: "SCK"
     },
     {
         title: "Shrum Science Centre - Physics",
@@ -593,7 +458,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "shrum.jpg",
         type: "building",
         icon: "default",
-        id: "shrump"
+        id: "SCP"
     },
     {
         title: "South East Classroom Block",
@@ -603,7 +468,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "seblock.jpg",
         type: "building",
         icon: "default",
-        id: "seblock"
+        id: "SECB"
     },
     {
         title: "South Science Building",
@@ -613,7 +478,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "ssb.jpg",
         type: "building",
         icon: "default",
-        id: "south"
+        id: "SSB"
     },
     {
         title: "Strand Hall",
@@ -623,7 +488,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "strand.jpg",
         type: "building",
         icon: "default",
-        id: "strand"
+        id: "SH"
     },
     {
         title: "Student Central",
@@ -633,7 +498,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "studentservices.jpg",
         type: "building",
         icon: "default",
-        id: "student"
+        id: "SS"
     },
     {
         title: "TASC1",
@@ -643,7 +508,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "TASC1.jpg",
         type: "building",
         icon: "default",
-        id: "tasc1"
+        id: "TASC1"
     },
     {
         title: "TASC2",
@@ -653,7 +518,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "TASC2.jpg",
         type: "building",
         icon: "default",
-        id: "tasc2"
+        id: "TASC2"
     },
     {
         title: "Terry Fox Field",
@@ -663,7 +528,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "terry.jpg",
         type: "building",
         icon: "default",
-        id: "terry"
+        id: "TFF"
     },
     {
         title: "The Towers",
@@ -673,7 +538,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "towers.jpg",
         type: "building",
         icon: "default",
-        id: "towers"
+        id: "TWRS"
     },
     {
         title: "Townhouse Complex",
@@ -683,7 +548,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "townhouses.jpg",
         type: "building",
         icon: "default",
-        id: "townhouses"
+        id: "THC"
     },
     {
         title: "Transit Exchange",
@@ -693,7 +558,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "transit.jpg",
         type: "building",
         icon: "default",
-        id: "transit"
+        id: "TLB"
     },
     {
         title: "Transportation Centre",
@@ -703,7 +568,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "TC.jpg",
         type: "building",
         icon: "default",
-        id: "transportation"
+        id: "TC"
     },
     {
         title: "UniverCity",
@@ -713,7 +578,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "univercity.jpg",
         type: "building",
         icon: "default",
-        id: "univercity"
+        id: "UC"
     },
 
     {
@@ -724,7 +589,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "uccc.jpg",
         type: "building",
         icon: "default",
-        id: "uccc"
+        id: "UCCC"
     },
     {
         title: "W.A.C. Bennett Library",
@@ -734,7 +599,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "LIB.jpg",
         type: "building",
         icon: "default",
-        id: "library"
+        id: "LIB"
     },
     {
         title: "West Mall Centre",
@@ -744,7 +609,7 @@ var locationArray = [ // array of locations courtesy of SFU
         photoname: "wmc.jpg",
         type: "building",
         icon: "default",
-        id: "wmc"
+        id: "WMC"
     }
 
 ];
