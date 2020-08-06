@@ -80,14 +80,6 @@ function init() {
         }));
     });
 
-    /* in progress
-    eventArray.forEach(function(event) {
-        eventMarkers.push(new google.maps.Marker({
-            position: 
-        }));
-    });
-    */
-
     const $info = document.getElementById('info');
 
     let watchId = trackLocation({
@@ -107,9 +99,6 @@ function init() {
         }
     });
 }
-
-// array of events happening today
-var eventArray = document.getElementById("eventsData").dataset.events;
 
 var locationArray = [ // array of locations courtesy of SFU
     {
