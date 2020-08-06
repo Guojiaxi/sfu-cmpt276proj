@@ -1,5 +1,5 @@
 /**
- * For the login session 
+ * For the login session
  * https://medium.com/@timtamimi/getting-started-with-authentication-in-node-js-with-passport-and-postgresql-2219664b568c
  */
 var express = require('express');
@@ -55,79 +55,62 @@ app.set('view options', { layout: false });
 
 require('./lib/routes.js')(app); //might need this to contain routes and logic
 
-//add
-/*
-//identifies current chat
-var chatID;
-//link to chat page
-app.get('/chat/:username/:chatID', (req, res) => {
-    var username = req.params.username;
-    chatID = req.params.chatID;
-    var getmessagesQuery = "SELECT * FROM messages where chatID = " + chatID + "ORDER BY time ASC;" +
-        "SELECT * FROM chats WHERE '" + username + "'= any(participants);" +
-        "SELECT * FROM login WHERE username = '" + username + "';" +
-        "SELECT * FROM chats WHERE chatID = " + chatID;
 
-    pool.query(getmessagesQuery, (error, result) => {
-        if (error)
-            res.end(error);
-        var mesData = { 'mesInfo': result[0].rows, 'chatInfo': result[1].rows, 'data': result[2].rows[0], 'currentchat': result[3].rows[0] }
-        res.render('chat', mesData);
-    })
-})
+/*socket
+const express = require('express');
+const path = require('path');
 
-app.post('/chat/:username/create', (req, res) => {
-    username = req.params.username;
-    var makechatQuery = "INSERT INTO chats VALUES (default, '" + req.body.chatnameinput + "', ARRAY ['" + username + "'])"
-    var getunameQuery = "SELECT * FROM login WHERE username = '" + username + "'"
+const app = express();
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
 
-    pool.query(makechatQuery, (error, unused) => {
-        if (error)
-            res.end(error);
-        pool.query(getunameQuery, (error, result) => {
-            if (error)
-                res.end(error);
-            var username = result.rows[0]
-            res.render('group', username);
-        })
-    })
-})
+let rooms = 0;
+
+app.use(express.static('.'));
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'game.html'));
+});
 
 io.on('connection', (socket) => {
-    console.log('user connected');
-    socket.join(chatID);
-    console.log("in chat: " + chatID)
 
-    //temporary ask for username
-    socket.on('username', (username) => {
-        socket.username = username;
+    // Create a new game room and notify the creator of game.
+    socket.on('createGame', (data) => {
+        socket.join(`room-${++rooms}`);
+        socket.emit('newGame', { name: data.name, room: `room-${rooms}` });
     });
 
-    socket.on('disconnect', () => {
-        console.log('user disconnected');
+    // Connect the Player 2 to the room he requested. Show error if room full.
+    socket.on('joinGame', function (data) {
+        var room = io.nsps['/'].adapter.rooms[data.room];
+        if (room && room.length === 1) {
+            socket.join(data.room);
+            socket.broadcast.to(data.room).emit('player1', {});
+            socket.emit('player2', { name: data.name, room: data.room })
+        } else {
+            socket.emit('err', { message: 'Sorry, The room is full!' });
+        }
     });
 
-    socket.on("chat_message", (info) => {
-        //broadcast message to everyone in port:5000 except yourself.
-        socket.to(info.chatID).emit("received", { name: socket.username, message: info.msg });
-        var storemessageQuery = "INSERT INTO messages VALUES (" + info.chatID + ", default, '" + socket.username + "', " + "'" + info.msg + "')";
-        pool.query(storemessageQuery, (error, result) => {})
 
-        socket.emit("chat_message", { name: socket.username, message: info.msg });
+       //Handle the turn played by either player and notify the other.
+
+    socket.on('playTurn', (data) => {
+        socket.broadcast.to(data.room).emit('turnPlayed', {
+            tile: data.tile,
+            room: data.room
+        });
     });
 
-    socket.on("add_participant", (info) => {
-        var addparticipantQuery = "update chats set participants = array_append(participants, '" + info.msg + "') where chatid = " + info.chatID
-        pool.query(addparticipantQuery, (error, result) => {})
 
-        var userAddedMessage = socket.username + " added " + info.msg + " to the chat."
-        socket.to(info.chatID).emit("received", { name: socket.username, message: userAddedMessage });
-        socket.emit("chat_message", { name: socket.username, message: userAddedMessage });
-
-        var storemessageQuery = "INSERT INTO messages VALUES (" + info.chatID + ", default, '" + socket.username + "', " + "'" + userAddedMessage + "')";
-        pool.query(storemessageQuery, (error, result) => {})
-    })
+       // Notify the players about the victor.
+       
+    socket.on('gameEnded', (data) => {
+        socket.broadcast.to(data.room).emit('gameEnd', data);
+    });
 });
+
+server.listen(process.env.PORT || 5000);
 */
 
 //app.listen(PORT);
