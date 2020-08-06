@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/study_scapes.css" />
+    <title>StudyScapes Request an Event - Student</title>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li>
+                    <a href="home"><span></span>Request a Meetup - Student</a>
+                </li>
+                <li>
+                    <ul>
+                        <li><a href="meetup">View All Meetups</a></li>
+                        <li><a href="meetup_request">Request a Meetup</a></li>
+                        <li><a href="room_finder">Room Finder</a></li>
+                        <li><a href=>Minigame</a></li>
+                        <li><a href="burnaby_map">View your location - Campus Map</a></li>
+                        <li><a href="burnaby_events" class="active">View Upcoming Events</a></li>
+                        <li><a href="logout">Sign Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <p>
+        <h2>Request an Event</h2>
+        <form method="POST" action="event_request_submit">
+            <label>What is the name of your Event?</label><br>
+            <input type="text" name="name" placeholder="Event Name" required><br>
+
+            <label>Who is hosting this Event?</label><br>
+            <input type="text" name="host_name" placeholder="Host Name"><br>
+
+            <label>When does it start?</label><br>
+            <input type="datetime-local" name="start_datetime" placeholder="Start Time" required><br>
+
+            <label>When does it end?</label><br>
+            <input type="datetime-local" name="end_datetime" placeholder="End Time"><br>
+
+            <label>Where will the Event happen?</label><br>
+            <select name="location" required>
+                <option value="AQ" selected>AQ</option>
+                <option value="ALCAN">ALCAN</option>
+                <option value="ASB">ASB</option>
+                <option value="BLU">BLU</option>
+                <option value="CONVO">CONVO</option>
+                <option value="DAC">DAC</option>
+                <option value="EDB">EDB</option>
+                <option value="RCB">RCB</option>
+                <option value="SSB">SSB</option>
+                <option value="TASC1">TASC1</option>
+                <option value="TASC2">TASC2</option>
+                <option value="LIB">LIB</option>
+                <option value="WMC">WMC</option>
+                <option value="OTHER">Other</option>
+            </select><br>
+
+            <label>If you chose "Other", Where would your Event be?</label><br>
+            <input type="text" name="other_location"><br>
+
+            <label>Do you have a website for the Event? (Optional)</label><br>
+            <input type="url" name="website" placeholder="Website"><br>
+
+            <p>
+                <input type="submit" name="btnRequest" class="button" value="Request Event">
+            </p>
+        </form>
+    </p>
+</body>
+
+</html>
