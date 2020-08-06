@@ -30,6 +30,32 @@
 
     <p>
         <h2>Student Request Meetups Page</h2>
+        <p>
+            <h2>All Users - Organized by Role</h2>
+            <table>
+                <tr>
+                    <th>Role</th>
+                    <th>Username</th>
+                    <th>User ID</th>
+                </tr>
+                <% results.forEach(function(r) { %>
+                    <tr>
+                        <td>
+                            <%= r.role %>
+                        </td>
+                        <td>
+                            <%= r.username %>
+                        </td>
+                        <td>
+                            <%= r.uid %>
+                        </td>
+                    </tr>
+                    <% }); %>
+            </table>
+        </p>
+        <hr>
+
+        <h2>Meetup Request Form</h2>
         <form method="POST" action="meetup_request_submit">
             <p>
 

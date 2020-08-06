@@ -13,11 +13,9 @@ var pool;
 pool = new Pool({
     connectionString: process.env.DATABASE_URL ||
         /* change this according to your local postgres password */
-        //'postgres://postgres:cmpt276@localhost/study_scapes'
-        'postgres://postgres:root@localhost/study_scapes' // josh's local db
+        'postgres://postgres:cmpt276@localhost/study_scapes' // celina's local db
+        //'postgres://postgres:root@localhost/study_scapes' // josh's local db
 })
-
-var flash = require('connect-flash'); //middleware to notify user
 
 var passport = require("passport"); //authentication middleware - modular
 var request = require('request'); //for HTTP calls
@@ -45,8 +43,6 @@ var bodyParser = require('body-parser') //for parsing json
 var path = require('path');
 
 app.use('/public', express.static(__dirname + '/public'));
-
-app.use(flash());
 
 app.use(bodyParser());
 //app.set('view engine', 'pug');
