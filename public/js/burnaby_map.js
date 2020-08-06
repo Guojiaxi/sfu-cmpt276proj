@@ -59,7 +59,7 @@ var eventMarkers = [];
  * Automatically called by the google maps API once it's loaded.
  */
 function init() {
-    console.log();
+    //console.log(eventArray);
 
     const initialPosition = { lat: 49.278136, lng: -122.920469 };
     const map = createMap(initialPosition);
