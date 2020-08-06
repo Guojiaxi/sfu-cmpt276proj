@@ -51,12 +51,16 @@ const getPositionErrorMessage = code => {
 
 // array of markers for each location in locationArray
 var locationMarkers = [];
+// array of markers for each event happening today
+var eventMarkers = [];
 
 /**
  * Initialize the application.
  * Automatically called by the google maps API once it's loaded.
  */
 function init() {
+    console.log();
+
     const initialPosition = { lat: 49.278136, lng: -122.920469 };
     const map = createMap(initialPosition);
 
@@ -75,6 +79,14 @@ function init() {
             label: location.id
         }));
     });
+
+    /* in progress
+    eventArray.forEach(function(event) {
+        eventMarkers.push(new google.maps.Marker({
+            position: 
+        }));
+    });
+    */
 
     const $info = document.getElementById('info');
 
@@ -96,6 +108,8 @@ function init() {
     });
 }
 
+// array of events happening today
+var eventArray = document.getElementById("eventsData").dataset.events;
 
 var locationArray = [ // array of locations courtesy of SFU
     {
