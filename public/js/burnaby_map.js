@@ -67,7 +67,6 @@ function init() {
     const marker = new google.maps.Marker({
         position: initialPosition,
         map: map,
-        animation: maps.Animation.BOUNCE,
         title: "You!",
         label: "You are here."
     });
