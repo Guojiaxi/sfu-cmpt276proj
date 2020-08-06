@@ -67,6 +67,7 @@ function init() {
     const marker = new google.maps.Marker({
         position: initialPosition,
         map: map,
+        animation: maps.Animation.BOUNCE,
         title: "You!",
         label: "You are here."
     });
@@ -83,7 +84,7 @@ function init() {
     /* in progress
     eventArray.forEach(function(event) {
         eventMarkers.push(new google.maps.Marker({
-            position: 
+            position:
         }));
     });
     */
