@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/study_scapes.css" />
+    <title>StudyScapes Request Meetup Page - Student</title>
+</head>
+
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li>
+                    <a href="home"><span></span>Request a Meetup - Student</a>
+                </li>
+                <li>
+                    <ul>
+                        <li><a href="meetup">View All Meetups</a></li>
+                        <li><a href="meetup_request" class="active">Request a Meetup</a></li>
+                        <li><a href="room_finder">Room Finder</a></li>
+                        <li><a href=>Minigame</a></li>
+                        <li><a href="burnaby_map">View your location - Campus Map</a></li>
+                        <li><a href="burnaby_events">View Upcoming Events</a></li>
+                        <li><a href="logout">Sign Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <p>
+        <h2>Student Request Meetups Page</h2>
+        <form method="POST" action="meetup_request_submit">
+            <p>
+
+                <table>
+                    <tr>
+                        <th>Users</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Location</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" name="users" placeholder="ex for user 1: 1, 3, 4, 6">
+                        </td>
+                        <td>
+                            <input type="date" name="date" placeholder="Date">
+                        </td>
+                        <td>
+                            <input type="time" name="time" placeholder="Time">
+                        </td>
+                        <td>
+                            <select name="location">
+                                    <option value="AQ" selected>AQ</option>
+                                    <option value="ALCAN">ALCAN</option>
+                                    <option value="ASB">ASB</option>
+                                    <option value="BLU">BLU</option>
+                                    <option value="CONVO">CONVO</option>
+                                    <option value="DAC">DAC</option>
+                                    <option value="EDB">EDB</option>
+                                    <option value="RCB">ECB</option>
+                                    <option value="SSB">SSB</option>
+                                    <option value="TASC1">TASC1</option>
+                                    <option value="TASC2">TASC2</option>
+                                    <option value="LIB">LIB</option>
+                                    <option value="WMC">WMC</option>
+                                  </select>
+                        </td>
+                    </tr>
+                </table>
+                <p>
+                    <input type="submit" name="btnRequest" class="button" value="Request Meetup">
+                </p>
+            </p>
+        </form>
+        <p>
+            Want to return to your meetups page? <a href="meetup">Click Here!</a>
+        </p>
+</body>
+
+</html>
