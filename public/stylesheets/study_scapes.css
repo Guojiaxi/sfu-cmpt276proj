@@ -90,3 +90,18 @@ th {
     color: white;
     border: 1px solid darkslategrey;
 }
+
+.tile {
+    width: 80px;
+    height: 80px;
+    font-size: 60px;
+    font-family: Helvetica;
+}
+
+.gameBoard {
+    display: none;
+}
+
+.center {
+    margin: 0 auto;
+}
