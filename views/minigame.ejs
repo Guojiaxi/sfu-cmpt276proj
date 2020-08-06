@@ -9,10 +9,6 @@
 </head>
 
 <body>
-    <style>
-
-    </style>
-
     <nav>
         <div>
             <ul>
@@ -37,19 +33,25 @@
         <div class="menu">
             <h1>Tic - Tac - Toe</h1>
             <h3>How To Play</h3>
-            <ol>
-                <li>Player 1 Create a new game by entering the username</li>
-                <li>Player 2 Enter another username and the room id that is displayed on first window.</li>
-                <li>Click on join game. </li>
-            </ol>
-            <h4>Create a new Game</h4>
-            <input type="text" name="name" id="nameNew" placeholder="Enter your name" required>
-            <button id="new">New Game</button>
-            <br><br>
-            <h4>Join an existing game</h4>
-            <input type="text" name="name" id="nameJoin" placeholder="Enter your name" required>
-            <input type="text" name="room" id="room" placeholder="Enter Game ID" required>
-            <button id="join">Join Game</button>
+            <p>
+                <ol>
+                    <li>Player 1 Create a new game by entering the username</li>
+                    <li>Player 2 Enter another username and the room id that is displayed on first window.</li>
+                    <li>Click on join game. </li>
+                </ol>
+            </p>
+            <p>
+                <h4>Create a new Game</h4>
+                <form method="POST" action="/new_game">
+                    <input type="text" name="gameName" value="" placeholder="Game Name">
+                    <input type="submit" name="btnNewGame" class="button_sm" value="Enter a name">
+            </p>
+            <p>
+                <h4>Join an existing game</h4>
+                <input type="text" name="name" id="nameJoin" placeholder="Enter your name" required>
+                <input type="text" name="room" id="room" placeholder="Enter Game ID" required>
+                <button id="join">Join Game</button>
+            </p>
         </div>
         <div class="gameBoard" style="display: none;">
             <h2 id="userHello"></h2>
@@ -75,7 +77,7 @@
     </div>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
-    <script src="game.js"></script>
+    <script type="text/javascript" src="/public/js/minigame.js"></script>
 </body>
 
 </html>
