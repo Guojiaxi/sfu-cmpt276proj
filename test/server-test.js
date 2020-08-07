@@ -12,25 +12,25 @@ var io = require('socket.io-client')
 
 // Object to make http calls or requests
 chai.use(chaiHttp);
-/**
+
 // Describes tests
 describe('Meetups', function() {
     // All user related tests
     it('should add a single user on successful POST request for /meetup_request_submit', function(done) {
         chai.request(server).post("/meetup_request_submit")
             .send({ 'users': '1, 2, 3, 4', 'date': '2020-12-25', 'time': '11:11', 'location': 'ASB' })
-            .end(function(error, res) {
+            .end((error, res) => {
                 res.should.have.status(200);
-                res.body[0].users.should.equal('1, 2, 3, 4');
-                res.body[1].users.should.equal('2020-12-25');
-                res.body[2].users.should.equal('11:11');
-                res.body[3].users.should.equal('ASB');
+                res.body.users.should.equal('1, 2, 3, 4');
+                res.body.date.should.equal('2020-12-25');
+                res.body.time.should.equal('11:11');
+                res.body.location.should.equal('ASB');
                 done();
             });
     });
 });
 
-
+/**
 describe("Socket", function() {
     it('should socket', function(done) {
         var client = io('http://localhost:5000');
