@@ -29,6 +29,10 @@ var session = require('express-session'); //session management - cookies
 
 var app = express();
 
+// Testing: cross-origin resource sharing
+//var cors = require('cors');
+//app.use("/", cors());
+
 app.use(require('cookie-parser')());
 app.use(require('body-parser').urlencoded({ extended: true }));
 
@@ -49,7 +53,8 @@ app.use(bodyParser());
 app.set('view engine', 'ejs');
 app.set('view options', { layout: false });
 
-require('./lib/routes.js')(app); //might need this to contain routes and logic
+// Need this to contain routes and logic
+require('./lib/routes.js')(app);
 
 
 /*socket
@@ -110,5 +115,8 @@ server.listen(process.env.PORT || 5000);
 */
 
 //app.listen(PORT);
-app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
-    //console.log('Node listening on port %s', PORT);
+app.listen(PORT, () => console.log(`Listening on ${ PORT }`));
+//console.log('Node listening on port %s', PORT);
+
+// For testing with cors
+//module.exports = app;
