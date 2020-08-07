@@ -84,7 +84,7 @@ function init() {
     marker.addListener("click", () => {
       infowindow.open(map, marker);
     });
-   }
+
 
     locationArray.forEach(function(location) {
         locationMarkers.push(new google.maps.Marker({
