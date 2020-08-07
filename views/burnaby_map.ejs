@@ -4,18 +4,33 @@
 <head>
     <title>Burnaby Campus Map</title>
     <link rel="stylesheet" type="text/css" href="/public/stylesheets/study_scapes.css">
+    <script type="text/javascript" src="/public/js/burnaby_map.js"></script>
     <style>
         #map {
             align-self: center;
             height: 94%;
             width: 100%;
         }
-        
+
         html,
         body {
             height: 100%;
             margin: 0;
             padding: 0;
+        }
+
+        #floating-panel {
+          position: absolute;
+          top: 10px;
+          left: 25%;
+          z-index: 5;
+          background-color: #fff;
+          padding: 5px;
+          border: 1px solid #999;
+          text-align: center;
+          font-family: "Roboto", "sans-serif";
+          line-height: 30px;
+          padding-left: 10px;
         }
     </style>
 </head>
@@ -40,6 +55,10 @@
             </ul>
         </div>
     </nav>
+    <div id="floating-panel">
+      <input onclick="clearMarkers();" type="button" value="Hide Markers" />
+      <input onclick="showMarkers();" type="button" value="Show All Markers" />
+    </div>
     <div id="map">
     </div>
     <script type="text/javascript" src="/public/js/burnaby_map.js"></script>
