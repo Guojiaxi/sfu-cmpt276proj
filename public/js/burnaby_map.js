@@ -64,7 +64,7 @@ function init() {
     //console.log(eventArray);
 
     const initialPosition = { lat: 49.278136, lng: -122.920469 };
-    const map = createMap(initialPosition);
+    map = createMap(initialPosition);
     const contentString =
    '<div id="content">' +
    '<div id="siteNotice">' +
@@ -125,7 +125,6 @@ function setMapOnAll(map) {
   }
 }
 
-setMapOnAll(map);
 // Removes the markers from the map, but keeps them in the array.
 function clearMarkers() {
   setMapOnAll(null);
