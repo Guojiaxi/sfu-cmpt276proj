@@ -63,14 +63,28 @@ function init() {
 
     const initialPosition = { lat: 49.278136, lng: -122.920469 };
     const map = createMap(initialPosition);
+    const contentString =
+   '<div id="content">' +
+   '<div id="siteNotice">' +
+   "</div>" +
+   '<h1 id="firstHeading" class="firstHeading">You are here!</h1>' +
+   "</div>" +
+   "</div>";
+   const infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
 
     const marker = new google.maps.Marker({
         position: initialPosition,
         map: map,
         animation: google.maps.Animation.BOUNCE,
         title: "You!",
-        label: "You are here."
+        label: " "
     });
+    marker.addListener("click", () => {
+      infowindow.open(map, marker);
+    });
+   }
 
     locationArray.forEach(function(location) {
         locationMarkers.push(new google.maps.Marker({
