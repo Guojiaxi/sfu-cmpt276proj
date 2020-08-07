@@ -58,6 +58,9 @@ var eventMarkers = [];
  * Initialize the application.
  * Automatically called by the google maps API once it's loaded.
  */
+
+let map;
+let locationArray = [];
 function init() {
     //console.log(eventArray);
 
@@ -95,23 +98,6 @@ function init() {
         }));
     });
 
-    // Sets the map on all markers in the array.
-    function setMapOnAll(map) {
-      for (let i = 0; i < locationArray.length; i++) {
-        locationArray[i].setMap(map);
-      }
-    }
-
-    // Removes the markers from the map, but keeps them in the array.
-    function clearMarkers() {
-      setMapOnAll(null);
-    }
-
-    // Shows any markers currently in the array.
-    function showMarkers() {
-      setMapOnAll(map);
-    }
-
 
     const $info = document.getElementById('info');
 
@@ -131,6 +117,23 @@ function init() {
             $info.classList.add('error');
         }
     });
+}
+
+// Sets the map on all markers in the array.
+function setMapOnAll(map) {
+  for (let i = 0; i < locationArray.length; i++) {
+    locationArray[i].setMap(map);
+  }
+}
+
+// Removes the markers from the map, but keeps them in the array.
+function clearMarkers() {
+  setMapOnAll(null);
+}
+
+// Shows any markers currently in the array.
+function showMarkers() {
+  setMapOnAll(map);
 }
 
 var locationArray = [ // array of locations courtesy of SFU
