@@ -112,8 +112,7 @@ function init() {
       setMapOnAll(map);
     }
 
-    // Deletes all markers in the array by removing references to them.
-    
+
     const $info = document.getElementById('info');
 
     let watchId = trackLocation({
