@@ -63,14 +63,28 @@ function init() {
 
     const initialPosition = { lat: 49.278136, lng: -122.920469 };
     const map = createMap(initialPosition);
+    const contentString =
+   '<div id="content">' +
+   '<div id="siteNotice">' +
+   "</div>" +
+   '<h1 id="firstHeading" class="firstHeading">You are here!</h1>' +
+   "</div>" +
+   "</div>";
+   const infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
 
     const marker = new google.maps.Marker({
         position: initialPosition,
         map: map,
         animation: google.maps.Animation.BOUNCE,
         title: "You!",
-        label: "You are here."
+        label: " "
     });
+    marker.addListener("click", () => {
+      infowindow.open(map, marker);
+    });
+
 
     locationArray.forEach(function(location) {
         locationMarkers.push(new google.maps.Marker({
@@ -81,6 +95,25 @@ function init() {
         }));
     });
 
+    // Sets the map on all markers in the array.
+    function setMapOnAll(map) {
+      for (let i = 0; i < locationArray.length; i++) {
+        locationArray[i].setMap(map);
+      }
+    }
+
+    // Removes the markers from the map, but keeps them in the array.
+    function clearMarkers() {
+      setMapOnAll(null);
+    }
+
+    // Shows any markers currently in the array.
+    function showMarkers() {
+      setMapOnAll(map);
+    }
+
+    // Deletes all markers in the array by removing references to them.
+    
     const $info = document.getElementById('info');
 
     let watchId = trackLocation({
