@@ -1,4 +1,10 @@
 /**
+ * Reference for marker manipulation
+ * https://developers.google.com/maps/documentation/javascript/examples/marker-remove#maps_marker_remove-javascript
+ * 
+ */
+
+/**
  * Create google maps Map instance.
  * @param {number} lat
  * @param {number} lng
@@ -60,21 +66,22 @@ var eventMarkers = [];
  */
 
 var map;
+
 function init() {
     //console.log(eventArray);
 
     const initialPosition = { lat: 49.278136, lng: -122.920469 };
     map = createMap(initialPosition);
     const contentString =
-   '<div id="content">' +
-   '<div id="siteNotice">' +
-   "</div>" +
-   '<h1 id="firstHeading" class="firstHeading">You are here!</h1>' +
-   "</div>" +
-   "</div>";
-   const infowindow = new google.maps.InfoWindow({
-    content: contentString
-  });
+        '<div id="content">' +
+        '<div id="siteNotice">' +
+        "</div>" +
+        '<h1 id="firstHeading" class="firstHeading">You are here!</h1>' +
+        "</div>" +
+        "</div>";
+    const infowindow = new google.maps.InfoWindow({
+        content: contentString
+    });
 
     const marker = new google.maps.Marker({
         position: initialPosition,
@@ -84,17 +91,17 @@ function init() {
         label: " "
     });
     marker.addListener("click", () => {
-      infowindow.open(map, marker);
+        infowindow.open(map, marker);
     });
 
     var pinImage = new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
-            new google.maps.Size(42, 68),
-            new google.maps.Point(0,0),
-            new google.maps.Point(10, 34));
+        new google.maps.Size(42, 68),
+        new google.maps.Point(0, 0),
+        new google.maps.Point(10, 34));
 
     locationArray.forEach(function(location) {
         locationMarkers.push(new google.maps.Marker({
-            position: {lat: location.lat, lng: location.lng},
+            position: { lat: location.lat, lng: location.lng },
             map: map,
             icon: pinImage,
             title: location.title,
@@ -127,19 +134,19 @@ function init() {
 
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {
-  for (let i = 0; i < locationMarkers.length; i++) {
-    locationMarkers[i].setMap(map);
-  }
+    for (let i = 0; i < locationMarkers.length; i++) {
+        locationMarkers[i].setMap(map);
+    }
 }
 
 // Removes the markers from the map, but keeps them in the array.
 function clearMarkers() {
-  setMapOnAll(null);
+    setMapOnAll(null);
 }
 
 // Shows any markers currently in the array.
 function showMarkers() {
-  setMapOnAll(map);
+    setMapOnAll(map);
 }
 
 var locationArray = [ // array of locations courtesy of SFU
