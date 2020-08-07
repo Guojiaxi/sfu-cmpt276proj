@@ -7,7 +7,7 @@ let server = require('../lib/routes');
 describe('Homepage', () => {
     describe('/GET /', () => {
         it('it should GET all of the homepage', (done) => {
-            chai.request(server)
+            chai.request('server')
                 .get('/')
                 .end((err, res) => {
                     (res).should.have.status(200);
