@@ -121,7 +121,7 @@ function init() {
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {
   for (let i = 0; i < locationArray.length; i++) {
-    locationArray[i].setMap(map);
+    locationMarkers[i].setMap(map);
   }
 }
 
