@@ -123,6 +123,8 @@ function init() {
     });
 }
 
+//The below functions were creaed using the Google Maps API Documentation, specifically https://developers.google.com/maps/documentation/javascript/examples/marker-remove#maps_marker_remove-javascript
+
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {
   for (let i = 0; i < locationMarkers.length; i++) {
