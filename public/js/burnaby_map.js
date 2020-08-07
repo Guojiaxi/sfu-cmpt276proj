@@ -59,8 +59,7 @@ var eventMarkers = [];
  * Automatically called by the google maps API once it's loaded.
  */
 
-let map;
-let locationArray = [];
+
 function init() {
     //console.log(eventArray);
 
