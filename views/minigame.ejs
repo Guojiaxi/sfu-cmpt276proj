@@ -35,15 +35,14 @@
     <hr>
     <p>
         <h3>Create a new Game</h3>
-        <form method="POST" action="/new_game">
-            <input type="text" name="gameName" value="" placeholder="Enter an In-game Username Name" required>
+        <form method="POST" action="/new_game_submit">
             <input type="submit" name="btnNewGame" class="button_sm" value="New Game">
         </form>
     </p>
+    <hr>
     <p>
         <h3>Join an existing game</h3>
-        <form method="POST" action="/join_game">
-            <input type="text" name="gameName" value="" placeholder="Enter an In-game Username Name" required>
+        <form method="POST" action="/join_game_submit">
             <input type="text" name="room" id="room" placeholder="Game ID" required>
             <input type="submit" name="btnJoinGame" class="button_sm" value="Join Game">
         </form>

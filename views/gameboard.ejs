@@ -3,8 +3,6 @@
 
 <head>
     <title>Tic Tac Toe</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="node_modules/skeleton-css/css/skeleton.css">
     <link rel="stylesheet" type="text/css" href="/public/stylesheets/study_scapes.css">
 </head>
 
@@ -29,54 +27,27 @@
         </div>
     </nav>
 
-    <div class="container">
-        <div class="menu">
-            <h1>Tic - Tac - Toe</h1>
-            <h3>How To Play</h3>
-            <p>
-                <ol>
-                    <li>Player 1 Create a new game by entering the username</li>
-                    <li>Player 2 Enter another username and the room id that is displayed on first window.</li>
-                    <li>Click on join game. </li>
-                </ol>
-            </p>
-            <p>
-                <h4>Create a new Game</h4>
-                <form method="POST" action="/new_game">
-                    <input type="text" name="gameName" value="" placeholder="Game Name" required>
-                    <input type="submit" name="btnNewGame" class="button_sm" value="Enter a name">
-                </form>
-            </p>
-            <p>
-                <h4>Join an existing game</h4>
-                <form method="POST" action="/join_game">
-                    <input type="text" name="gameName" value="" placeholder="Game Name" required>
-                    <input type="text" name="room" id="room" placeholder="Game ID" required>
-                    <input type="submit" name="btnJoinGame" class="button_sm" value="Join Game">
-                </form>
-            </p>
-        </div>
-        <div class="gameBoard" style="display: none;">
-            <h2 id="userHello"></h2>
-            <h3 id="turn"></h3>
-            <table class="center">
-                <tr>
-                    <td><button class="tile" id="button_00"></button></td>
-                    <td><button class="tile" id="button_01"></button></td>
-                    <td><button class="tile" id="button_02"></button></td>
-                </tr>
-                <tr>
-                    <td><button class="tile" id="button_10"></button></td>
-                    <td><button class="tile" id="button_11"></button></td>
-                    <td><button class="tile" id="button_12"></button></td>
-                </tr>
-                <tr>
-                    <td><button class="tile" id="button_20"></button></td>
-                    <td><button class="tile" id="button_21"></button></td>
-                    <td><button class="tile" id="button_22"></button></td>
-                </tr>
-            </table>
-        </div>
+    <!-- <div class="gameBoard" style="display: none;">
+        <h2 id="userHello"></h2>
+        <h3 id="turn"></h3>-->
+    <table class="board">
+        <tr class="board">
+            <td class="board"><button class="tile" id="button_00"></button></td>
+            <td class="board"><button class="tile" id="button_01"></button></td>
+            <td class="board"><button class="tile" id="button_02"></button></td>
+        </tr>
+        <tr class="board">
+            <td class="board"><button class="tile" id="button_10"></button></td>
+            <td class="board"><button class="tile" id="button_11"></button></td>
+            <td class="board"><button class="tile" id="button_12"></button></td>
+        </tr>
+        <tr class="board">
+            <td class="board"><button class="tile" id="button_20"></button></td>
+            <td class="board"><button class="tile" id="button_21"></button></td>
+            <td class="board"><button class="tile" id="button_22"></button></td>
+        </tr>
+    </table>
+    </div>
     </div>
     <script src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="/public/js/minigame.js"></script>
