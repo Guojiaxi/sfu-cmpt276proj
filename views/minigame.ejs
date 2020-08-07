@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tic-Tac-Toe</title>
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/study_scapes.css">
+</head>
+
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li>
+                    <a href="home"><span></span>Home - Faculty</a>
+                </li>
+                <li>
+                    <ul>
+                        <li><a href="meetup">Meetups</a></li>
+                        <li><a href="room_finder">Room Finder</a></li>
+                        <li><a href="minigame" class="active">Minigame</a></li>
+                        <li><a href="burnaby_map">View Your Location - Campus Map</a></li>
+                        <li><a href="burnaby_events">View Upcoming Events</a></li>
+                        <li><a href="logout">Sign Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <h1>Tic-Tac-Toe</h1>
+    <h3>How To Play</h3>
+    <p>Player 1: Create a new game by entering the username</p>
+    <p>Player 2: Enter another username and the room ID that is displayed on first window.</p>
+    <p>Click on the join game button</p>
+    <hr>
+    <p>
+        <h3>Create a new Game</h3>
+        <form method="POST" action="/new_game_submit">
+            <input type="submit" name="btnNewGame" class="button_sm" value="New Game">
+        </form>
+    </p>
+    <hr>
+    <p>
+        <h3>Join an existing game</h3>
+        <form method="POST" action="/join_game_submit">
+            <input type="text" name="room" id="room" placeholder="Game ID" required>
+            <input type="submit" name="btnJoinGame" class="button_sm" value="Join Game">
+        </form>
+    </p>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/public/js/minigame.js"></script>
+</body>
+
+</html>

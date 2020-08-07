@@ -92,9 +92,9 @@ th {
 }
 
 .tile {
-    width: 80px;
-    height: 80px;
-    font-size: 60px;
+    width: 200px;
+    height: 200px;
+    font-size: medium;
     font-family: Helvetica;
 }
 
@@ -102,6 +102,10 @@ th {
     display: none;
 }
 
-.center {
-    margin: 0 auto;
+.board {
+    border: none;
+    background: none;
+    background-color: cornflowerblue;
+    width: auto;
+    margin: 50px 50px 50px 50px;
 }

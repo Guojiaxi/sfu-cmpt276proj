@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" type="text/css" href="/public/stylesheets/study_scapes.css">
+</head>
+
+<body>
+    <nav>
+        <div>
+            <ul>
+                <li>
+                    <a href="home"><span></span>Home - Faculty</a>
+                </li>
+                <li>
+                    <ul>
+                        <li><a href="meetup">Meetups</a></li>
+                        <li><a href="room_finder">Room Finder</a></li>
+                        <li><a href="minigame" class="active">Minigame</a></li>
+                        <li><a href="burnaby_map">View Your Location - Campus Map</a></li>
+                        <li><a href="burnaby_events">View Upcoming Events</a></li>
+                        <li><a href="logout">Sign Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- <div class="gameBoard" style="display: none;">
+        <h2 id="userHello"></h2>
+        <h3 id="turn"></h3>-->
+    <table class="board">
+        <tr class="board">
+            <td class="board"><button class="tile" id="button_00"></button></td>
+            <td class="board"><button class="tile" id="button_01"></button></td>
+            <td class="board"><button class="tile" id="button_02"></button></td>
+        </tr>
+        <tr class="board">
+            <td class="board"><button class="tile" id="button_10"></button></td>
+            <td class="board"><button class="tile" id="button_11"></button></td>
+            <td class="board"><button class="tile" id="button_12"></button></td>
+        </tr>
+        <tr class="board">
+            <td class="board"><button class="tile" id="button_20"></button></td>
+            <td class="board"><button class="tile" id="button_21"></button></td>
+            <td class="board"><button class="tile" id="button_22"></button></td>
+        </tr>
+    </table>
+    </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/public/js/minigame.js"></script>
+</body>
+
+</html>
