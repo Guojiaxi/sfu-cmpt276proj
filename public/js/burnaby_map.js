@@ -125,6 +125,7 @@ function setMapOnAll(map) {
   }
 }
 
+setMapOnAll(map);
 // Removes the markers from the map, but keeps them in the array.
 function clearMarkers() {
   setMapOnAll(null);
