@@ -87,12 +87,16 @@ function init() {
       infowindow.open(map, marker);
     });
 
+    var pinImage = new google.maps.MarkerImage("http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+            new google.maps.Size(21, 34),
+            new google.maps.Point(0,0),
+            new google.maps.Point(10, 34));
 
     locationArray.forEach(function(location) {
         locationMarkers.push(new google.maps.Marker({
             position: {lat: location.lat, lng: location.lng},
             map: map,
-            icon: {url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"},
+            icon: pinImage,
             title: location.title,
             label: location.id
         }));
