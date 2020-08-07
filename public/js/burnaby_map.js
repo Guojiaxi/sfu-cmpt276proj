@@ -59,7 +59,7 @@ var eventMarkers = [];
  * Automatically called by the google maps API once it's loaded.
  */
 
-
+var map;
 function init() {
     //console.log(eventArray);
 
@@ -120,7 +120,7 @@ function init() {
 
 // Sets the map on all markers in the array.
 function setMapOnAll(map) {
-  for (let i = 0; i < locationArray.length; i++) {
+  for (let i = 0; i < locationMarkers.length; i++) {
     locationMarkers[i].setMap(map);
   }
 }
