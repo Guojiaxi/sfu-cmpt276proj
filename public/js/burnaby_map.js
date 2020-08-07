@@ -92,6 +92,7 @@ function init() {
         locationMarkers.push(new google.maps.Marker({
             position: {lat: location.lat, lng: location.lng},
             map: map,
+            icon: {url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"},
             title: location.title,
             label: location.id
         }));
